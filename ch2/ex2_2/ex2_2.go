@@ -1,6 +1,7 @@
 /*
 Program to convert given value from on unit to another.
-Usage: ex2_2.go -convT convertion_type arg_1 arg_2 ... arg_n
+Usage:
+	go run ex2_2.go -convT convertion_type arg_1 arg_2 ... arg_n
 Convertion types are:
 	-CToF: celsisus to fahrenheit;
 	-FToC: fahrenheit to celsius;
