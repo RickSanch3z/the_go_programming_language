@@ -24,19 +24,20 @@ func main() {
 			countLines(f, counts)
 			f.Close()
 		}
-		for file_name, line_map :=range counts {
-			printed_file_name := false
-			for line, n := range line_map {
-				if n > 1 {
-					if !printed_file_name {
-						printed_file_name = true
-						fmt.Printf("In file:\t%s\n", file_name)
-					}
-					fmt.Printf("%d\t%s\n", n, line)
+	}
+
+	for file_name, line_map :=range counts {
+		printed_file_name := false
+		for line, n := range line_map {
+			if n > 1 {
+				if !printed_file_name {
+					printed_file_name = true
+					fmt.Printf("In file:\t%s\n", file_name)
 				}
+				fmt.Printf("%d\t%s\n", n, line)
 			}
 		}
-	}
+	}	
 }
 
 func countLines(f *os.File, counts map[string]map[string]int) {
@@ -48,8 +49,11 @@ func countLines(f *os.File, counts map[string]map[string]int) {
 			line_map = make(map[string]int)
 			counts[f.Name()] = line_map
 		}
-
+		
+		// uncomment this test if empty lines should not be counted 
+		// if len(input.Text()) > 0 {
 		counts[f.Name()][input.Text()]++
+		// }
 	}
 	// NOTE: ignoring potential errors from input.Err()
 }
